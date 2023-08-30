@@ -14,7 +14,7 @@ describe "#caesar_cipher" do
     end
   
     it "leaves non-alphabetic characters unchanged" do
-      expect(caesar_cipher("Hello, World!", 7)).to eq("Olssv, Tlsva!")
+      expect(caesar_cipher("Hello, World!", 7)).to eq("Olssv, Dvysk!")
     end
   
     it "handles negative shifts" do
@@ -22,6 +22,6 @@ describe "#caesar_cipher" do
     end
   
     it "handles shifts greater than 26" do
-      expect(caesar_cipher("What a string!", 30)).to eq("Bmfy f xywnsl!")
+      expect(caesar_cipher("What a string!", 30)).to eq("Alex e wxvmrk!")
     end
   end
