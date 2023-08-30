@@ -1,24 +1,27 @@
 def caesar_cipher(input_string, shift)
   result = ""
-  
+
   input_string.each_char do |char|
     if char.match(/[a-zA-Z]/)
-      shift_amount = shift % 26  # Ensure shift is within the alphabet range
-      ascii_offset = char =~ /[a-z]/ ? 97 : 65  # Determine ASCII offset for lowercase or uppercase
+      ascii_offset = char =~ /[a-z]/ ? 'a'.ord : 'A'.ord
 
-      shifted_char = (char.ord - ascii_offset + shift_amount) % 26 + ascii_offset
-      result << shifted_char.chr
+      # Calculate the effective shift within the range of 0-25
+      effective_shift = shift % 26
+
+      shifted_char = (((char.ord - ascii_offset + effective_shift) % 26 + 26) % 26 + ascii_offset).chr
+      result << shifted_char
     else
-      result << char
+      result << char  # Non-alphabetic characters are added as is
     end
   end
 
   return result
 end
 
+
 # Example usage with "hello" and a shift of 5
 input_string = "What a string!"
-shift = 5
+shift = 31
 ciphered_text = caesar_cipher(input_string, shift)
 
 puts "Original text: #{input_string}"
